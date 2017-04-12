@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Electron System Info App</title>
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/cerulean/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<h1>System Info App</h1>
+		<div id="output">
+			
+		</div>
+	</div>
+</body>
+	<script>
+		console.log(process)
+		let output = `
+			<h2 class="page-header"> App Version Data</h2>
+			<ul class="list-group">
+				<li class="list-group-item">Node: 
+				${process.versions.node}
+				</li>
+			</ul>
+			<ul class="list-group">
+				<li class="list-group-item">Chrome: 
+				${process.versions.chrome}
+				</li>
+			</ul>
+			<ul class="list-group">
+				<li class="list-group-item">Electron: 
+				${process.versions.electron}
+				</li>
+			</ul>
+
+			<h2 class="page-header"> System Specs</h2>
+			<ul class="list-group">
+				<li class="list-group-item">Architecture: 
+				${process.arch}
+				</li>
+			</ul>
+			<ul class="list-group">
+				<li class="list-group-item">Identifier: 
+				${process.env.PROCESSOR_IDENTIFIER}
+				</li>
+			</ul>
+			<ul class="list-group">
+				<li class="list-group-item">Printer: 
+				${process.env.PRINTER}
+				</li>
+			</ul>
+
+			<h2 class="page-header"> Memory Info</h2>
+			<ul class="list-group">
+				<li class="list-group-item">Architecture: 
+				${process.getSystemMemoryInfo().total}
+				</li>
+			</ul>
+			<ul class="list-group">
+				<li class="list-group-item">Identifier: 
+				${process.getSystemMemoryInfo().free}
+				</li>
+			</ul>
+			<ul class="list-group">
+				<li class="list-group-item">Printer: 
+				${process.getSystemMemoryInfo().swapTotal}
+				</li>
+			</ul>
+			<ul class="list-group">
+				<li class="list-group-item">Printer: 
+				${process.getSystemMemoryInfo().swapFree}
+				</li>
+			</ul
+		`
+		document.getElementById('output').innerHTML = output;
+	</script>
+	<script>
+		require("./renderer.js")
+	</script>
+</html>
+
